@@ -4,6 +4,8 @@ const router = require('express').Router();
 const webcam = require('node-webcam');
 // Connectting AWS
 const AWS = require('aws-sdk');
+// Surpressing v2 error message
+require('aws-sdk/lib/maintenance_mode_message').suppress = true;
 // File system for js
 const fs = require('fs');
 
@@ -26,7 +28,9 @@ router.post('/', (req, res) => {
     camera.capture('image.jpg', (error, data) => {
       if (error) {
         console.error(error);
-        res.status(500).send('An error occurred while capturing the image.');
+        res
+          .status(500)
+          .send('An error occurred while capturing the image.');
       } else {
         // Reading the image data as a binary buffer
         const imageData = fs.readFileSync('image.jpg');
@@ -43,7 +47,9 @@ router.post('/', (req, res) => {
         rekognition.detectFaces(rekognitionParams, (err, data) => {
           if (err) {
             console.error(err);
-            res.status(500).send('An error occurred while processing the image.');
+            res
+              .status(500)
+              .send('An error occurred while processing the image.');
           } else {
             res.send(data);
           }
