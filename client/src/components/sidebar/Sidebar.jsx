@@ -1,13 +1,13 @@
 import './sidebar.scss';
 import DashboardIcon from '@mui/icons-material/Dashboard'; 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PeopleIcon from '@mui/icons-material/People';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import HelpIcon from '@mui/icons-material/Help';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import BadgeIcon from '@mui/icons-material/Badge';
 
 const Sidebar = () => {
   return (
@@ -29,7 +29,7 @@ const Sidebar = () => {
                     <div className="span">Students</div>
                 </li>
                 <li>
-                    <PeopleIcon className='icon'/>
+                    <BadgeIcon className='icon'/>
                     <div className="span">Employees</div>
                 </li>
                 <li>
