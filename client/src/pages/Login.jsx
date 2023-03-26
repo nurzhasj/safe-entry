@@ -1,7 +1,8 @@
 import React from 'react';
+import './login.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import FormInput from '../components/FormInput';
+import FormInput from '../components/form/FormInput';
 
 const Login = () => {
     let navigate = useNavigate();

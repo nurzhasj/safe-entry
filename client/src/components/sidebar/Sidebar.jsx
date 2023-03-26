@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
         <div className="top">
-            <p className="logo">SafeEntry</p>
+            <img src="safe-entry-logo.png" alt="" />
         </div>
         <hr />
         <div className="center">
