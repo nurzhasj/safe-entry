@@ -72,9 +72,6 @@ const Widget = ({ type }) => {
             <div className="link">{data.link}</div>
         </div>
         <div className="right">
-            <p className="percentage positive">
-                20%
-            </p>
             {data.icon}
         </div>
     </div>
