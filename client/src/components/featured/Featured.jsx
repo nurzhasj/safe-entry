@@ -18,7 +18,7 @@ const Featured = () => {
                     value={70}  
                     strokeWidth={3}
                     styles={{ 
-                        path: {stroke: `#00008b`},
+                        path: {stroke: `#6BB2FF`},
                         text: {fill: `#00008b`, fontSize: '32px'} 
                     }}
                     >

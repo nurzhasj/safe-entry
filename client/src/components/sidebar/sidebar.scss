@@ -4,7 +4,7 @@
     flex: 1;
     border-right: 0.5px solid rgb(230, 227, 227);
     min-height: 100vh;
-    background-color: ivory;
+    background-color: white;
     font-family: 'Poppins', sans-serif;
 
     img {
@@ -55,7 +55,11 @@
                 cursor: pointer;
 
                 &:hover {
-                    background-color: #dddddd;
+                    background-color: #cae3f3fe;
+                    
+                    .span {
+                        color: rgb(102,178,255);
+                    }
                 }
 
                 .icon {

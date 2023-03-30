@@ -3,11 +3,11 @@
     justify-content: space-between;
     flex: 1;
     padding: 10px;
-    -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.27); 
-    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.15); 
+    box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.15);
     border-radius: 10px;
     height: 100px;
-    background-image: linear-gradient(to left bottom, #fffff0, #fffdf3, #fffcf9, #fffdfe, #fffeff, #faf6fd, #f3eefd, #e8e8fe, #d2d9fe, #b7cbff, #95beff, #66b2ff);
+    background: white;
     font-family: 'Poppins', sans-serif;
 
     .left {
@@ -54,12 +54,30 @@
         .counter {
             font-size: 28px;
             font-weight: 300;
+            color: rgb(102,178,255);
         }
 
         .link {
             width: max-content;
             font-size: 12px;
             border-bottom: 1px solid gray;
+            color: gray;
+        }
+    }
+
+    &:hover {
+        background-color: #cae3f3fe;
+
+        .counter {
+            color: black;
+        }
+
+        .link {
+            color: rgb(102,178,255);
+        }
+
+        .title {
+            color: rgb(102,178,255);
         }
     }
 }

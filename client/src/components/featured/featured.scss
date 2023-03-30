@@ -3,10 +3,11 @@
 .featured {
     flex: 1;
     flex-direction: column;
-    -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.27); 
-    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.27); 
+    -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.15); 
+    box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.15);
     padding: 10px;
     font-family: 'Poppins', sans-serif;
+    background: white;
 
     .top {
         display: flex;
@@ -56,11 +57,12 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            color: rgb(102,178,255);
             
             .icon {
                 margin-bottom: 8px;
                 font-size: large;
-                color: darkblue;
+                color: rgb(102,178,255);;
                 position: absolute;
                 top: 25%;
                 bottom: 0;

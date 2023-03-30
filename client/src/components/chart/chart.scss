@@ -1,3 +1,18 @@
 .chart {
     flex: 4;
+    -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.15); 
+    box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.15);
+    color: gray;
+
+    .title {
+        margin-bottom: 20px ;
+    }
+
+    .grid {
+        stroke: rgb(199, 242, 253);
+    }
+
+    .xaxis {
+        font-family: 'Poppins', sans-serif;
+    }
 }
