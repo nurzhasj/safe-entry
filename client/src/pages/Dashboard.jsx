@@ -24,6 +24,11 @@ const Dashboard = () => {
             </div>
               <Chart/>
           </div>
+          <div className="listContainer">
+            <div className="listTitle">
+              Latest Records
+            </div>
+          </div>
       </div>
     </div>
   )

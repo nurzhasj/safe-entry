@@ -51,7 +51,7 @@ const data = [
 const Chart = () => {
   return (
     <div className="chart">
-      <div className="title">Daily Total Gate Records</div>
+      <div className="title">Weekly Gate Records</div>
         <ResponsiveContainer width="100%" aspect={2 / 1}>
         <BarChart
           width={500}

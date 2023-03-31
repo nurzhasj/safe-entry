@@ -9,6 +9,8 @@ import HelpIcon from '@mui/icons-material/Help';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import BadgeIcon from '@mui/icons-material/Badge';
 
+import { Link } from "react-router-dom";
+
 const Sidebar = () => {
   return (
     <div className="sidebar">
@@ -21,16 +23,22 @@ const Sidebar = () => {
                 <p className="title">MAIN</p>
                 <li>
                     <DashboardIcon className='icon'/> 
-                    <div className="span">Dashboard</div>
+                    <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                        <div className="span">Dashboard</div>
+                    </Link>
                 </li>
                 <p className="title">LISTS</p>
                 <li>
                     <SupervisedUserCircleIcon className='icon'/>
-                    <div className="span">Students</div>
+                    <Link to="/students" style={{ textDecoration: "none" }}>
+                        <div className="span">Students</div>
+                    </Link>
                 </li>
                 <li>
                     <BadgeIcon className='icon'/>
-                    <div className="span">Employees</div>
+                    <Link to="/employees" style={{ textDecoration: "none" }}>
+                        <div className="span">Employees</div>
+                    </Link>
                 </li>
                 <li>
                     <DirectionsCarIcon className='icon'/>
@@ -47,7 +55,9 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <LogoutIcon className='icon'/> 
-                    <div className="span">Log Out</div>
+                    <Link to="/login" style={{ textDecoration: "none" }}>
+                        <div className="span">Log Out</div>
+                    </Link>
                 </li> 
                 <p className="title">Support</p>
                 <li> 
