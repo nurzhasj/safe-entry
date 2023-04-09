@@ -10,6 +10,8 @@ const processImageRoute = require("./routes/process-image");
 const userRoute = require("./routes/users");
 // Auth Router
 const authRouter = require("./routes/auth");
+// Recognition Router
+const recoRouter = require("./routes/recognize");
 
 // App bootstrapping using express
 const app = express();
@@ -46,6 +48,9 @@ app.use("/api/login", authRouter);
 
 // User routes
 app.use("/api/users", userRoute);
+
+// The recognition route
+app.use("/api/recognize", recoRouter);
 
 // Server listening process
 app.listen(port, () => {

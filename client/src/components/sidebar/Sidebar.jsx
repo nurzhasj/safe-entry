@@ -9,13 +9,15 @@ import HelpIcon from '@mui/icons-material/Help';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import BadgeIcon from '@mui/icons-material/Badge';
 
+import logo from '../../assets/safe-entry-logo.png';
+
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
         <div className="top">
-            <img src="safe-entry-logo.png" alt="" />
+            <img src={logo} alt="" />
         </div>
         <hr />
         <div className="center">
