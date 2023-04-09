@@ -1,6 +1,7 @@
 .datatable {
     height: 600px;
     padding: 20px;
+    font-family: 'Poppins', sans-serif;
     
     .datatableTitle{
       width: 100%;
@@ -13,10 +14,10 @@
   
       .link{
         text-decoration: none;
-        color: green;
+        color: #66b2ff;;
         font-size: 16px;
         font-weight: 400;
-        border: 1px solid green;
+        border: 1px solid #66b2ff;;
         padding: 5px;
         border-radius: 5px;
         cursor: pointer;
@@ -62,7 +63,7 @@
       .viewButton {
         padding: 2px 5px;
         border-radius: 5px;
-        color: darkblue;
+        color: rgb(87, 87, 255);
         border: 1px dotted rgba(0, 0, 139, 0.596);
         cursor: pointer;
       }

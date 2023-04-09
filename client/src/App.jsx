@@ -7,6 +7,7 @@ import List from './pages/List';
 import Error from './pages/Error';
 import Single from './pages/Single';
 import New from './pages/New';
+import Recognize from './pages/Recognize';
 
 const App = () => {
    return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
             <Route path='dashboard' element={<Dashboard/>}/>
             <Route path='login' element={<Login/>}/>
+            <Route path='recognize' element={<Recognize/>}/>
             <Route path='students'>
                 <Route index element={<List/>}/>
                 <Route path=':stuId' element={<Single/>}/>

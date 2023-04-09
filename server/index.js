@@ -13,6 +13,9 @@ const authRouter = require("./routes/auth");
 // Recognition Router
 const recoRouter = require("./routes/recognize");
 
+// Body Parser
+const bodyParser = require('body-parser');
+
 // App bootstrapping using express
 const app = express();
 
@@ -39,6 +42,8 @@ mongoose.connect(process.env.MONGO_URL, {
 })
     .then(() => console.log("Mongo connection is successful"))
     .catch((err) => console.log(err));
+// Extending
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // Registering Process Image Route
 app.use("/api/process-image", processImageRoute);
