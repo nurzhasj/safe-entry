@@ -1,6 +1,6 @@
 import './chart.scss';
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Label, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const data = [
   {
@@ -65,7 +65,9 @@ const Chart = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" className='grid'/>
-          <XAxis dataKey="name" stroke='gray' className='xaxis'/>
+          <XAxis dataKey="name" stroke='gray' className='xaxis'>
+            <Label content="content" position="insideBottom" offset={0} />
+          </XAxis>
           <YAxis stroke='gray'/>
           <Tooltip />
           <Legend />

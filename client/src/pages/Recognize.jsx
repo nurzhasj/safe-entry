@@ -8,6 +8,8 @@ const Recognize = () => {
   const videoRef = useRef(null);
   const [hideCameraLogo, setHideCameraLogo] = useState(false);
   const [hideNodeImage, setHideNodeImage] = useState(false);
+  const [personId, setPersonId] = useState(null);
+  const [status, setStatus] = useState(null);
 
   const handleCapture = async () => {
     const canvas = document.createElement('canvas');
@@ -53,19 +55,29 @@ const Recognize = () => {
       canvas.height = img.height;
       canvas.getContext('2d').drawImage(img, 0, 0);
       const imageData = canvas.toDataURL('image/jpeg');
+
+      const formData = new URLSearchParams();
+      formData.append('base64Img', imageData.split(',')[1]);
+
+      console.log(imageData.split(',')[1]);
   
-      fetch('http://localhost:8800/api/process-image', {
+      fetch('https://safe-entry-flask-app.azurewebsites.net/recognize_person', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-          image: imageData.split(',')[1]
-        }),
+        body: formData.toString(),
       })
         .then(response => {
-            alert('Access Granted!')
+          alert('Access Granted!')
           console.log('Response:', response);
+          handleStopCapture();
+          setHideNodeImage(true);
+        })
+        .then((data) => {
+          console.log(data);
+          setPersonId(data.person_id);
+          setStatus(data.status);
           handleStopCapture();
           setHideNodeImage(true);
         })
@@ -73,6 +85,8 @@ const Recognize = () => {
           console.error('Error:', error);
           handleStopCapture();
         });
+
+        console.log(`Person ID: ${personId}`);
     };
     img.src = image;
   };
@@ -84,7 +98,7 @@ const Recognize = () => {
       <div className="singleContainer">
         <Navbar />
         <div className="addImagesContainer">
-          <h1 className="title">Recognize Test</h1>
+          <h1 className="title">Recognize Test {personId} / {status}</h1>
           <div className="camera-container">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Face_ID_logo.svg/800px-Face_ID_logo.svg.png" className={`cameraLogo ${hideCameraLogo ? 'hidden' : ''}`} alt="" />
             <div className="video-wrapper">

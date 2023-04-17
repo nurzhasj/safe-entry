@@ -1,20 +1,27 @@
 // Express for backend side
 const express = require("express");
-// Mongo for database
-const mongoose = require("mongoose");
+// Database connection
+const connectDB = require("./config/db");
 // DotEnv for hiding sensitive data
 const dotenv = require("dotenv");
-// Process Image Router
+
+// Routers
 const processImageRoute = require("./routes/process-image");
-// User Router
 const userRoute = require("./routes/users");
-// Auth Router
 const authRouter = require("./routes/auth");
-// Recognition Router
 const recoRouter = require("./routes/recognize");
 
 // Body Parser
 const bodyParser = require('body-parser');
+
+// For coloring strings
+const colors = require('colors');
+
+// Configuring DotEnv before using it
+dotenv.config();
+
+// Database connection
+connectDB();
 
 // App bootstrapping using express
 const app = express();
@@ -31,17 +38,6 @@ app.use(express.json());
 // Port number of backend server
 const port = 8800;
 
-// Configuring DotEnv before using it
-dotenv.config();
-
-mongoose.set('strictQuery', false);
-// Mongo cloud cluster connection
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log("Mongo connection is successful"))
-    .catch((err) => console.log(err));
 // Extending
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
@@ -59,5 +55,5 @@ app.use("/api/recognize", recoRouter);
 
 // Server listening process
 app.listen(port, () => {
-    console.log("Backend server is running!");
+    console.log(`Backend server is running!`.blue.underline);
 });
