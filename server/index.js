@@ -55,5 +55,5 @@ app.use("/api/recognize", recoRouter);
 
 // Server listening process
 app.listen(port, () => {
-    console.log(`Backend server is running!`.blue.underline);
+    console.log(`Backend server is running on port: ${port}`.blue.underline);
 });

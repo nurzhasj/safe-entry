@@ -9,7 +9,7 @@ const {
 
 // get users, create user
 router.route('/')
-    .get(authenticate, getUsers)
+    .get(getUsers)
     .post(authenticate, createUser);
 
 // Create Admin Route

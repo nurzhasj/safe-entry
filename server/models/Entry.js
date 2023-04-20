@@ -5,12 +5,8 @@ const entrySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  date: Date,
-  entryTime: {
-    type: Date,
-    default: Date.now
-  },
-  exitTime: Date
+  enterDate: String,
+  exitDate: String,
 });
 
 module.exports = mongoose.model('Entry', entrySchema);

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Entry = require("../models/Entry");
 const bcrypt = require("bcrypt");
 
 // @desc    Signing In a User
@@ -71,7 +72,7 @@ const createAdmin = async (request, response) => {
 // @access  Private
 const getUsers = async (request, response) => {
     try {
-        const users = await User.find();
+        const users = await User.find({ entries: { $exists: true, $ne: [] } }).populate('entries');
         
         return response
             .json(users);

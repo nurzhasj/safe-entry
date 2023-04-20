@@ -11,7 +11,11 @@ const UserSchema = new mongoose.Schema({
       required: true
     }],
     isAdmin: {type: Boolean, default: false},
-    adminType: { type: String, enum: ['super-admin', 'admin'] }
+    adminType: { type: String, enum: ['super-admin', 'admin'] },
+    entries: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Entry'
+    }]
 });
 
 module.exports = mongoose.model("User", UserSchema);
