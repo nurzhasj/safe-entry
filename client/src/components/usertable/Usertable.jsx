@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import DataTable from '../datatable/Datatable';
 
-const Usertable = () => {
+const Usertable = ({ userType }) => {
     const [users, setUsers] = useState([]); 
 
     const userColumns = [
-        { field: "uid", headerName: "Student ID", width: 105},
+        { field: "uid", headerName: "User ID", width: 105},
         {
           field: "user",
           headerName: "Student",
@@ -61,10 +61,10 @@ const Usertable = () => {
     }
 
     useEffect(() => {
-        fetch('http://localhost:8800/api/users', { method: "GET" })
+        fetch(`http://localhost:8800/api/users/${userType}`, { method: "GET" })
             .then(response => response.json())
             .then(json => setUsers(json));
-    });
+    }, [userType]);
 
     console.log(users);
 

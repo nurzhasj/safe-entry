@@ -4,13 +4,12 @@ const authenticate = require("../middlewares/authenticate");
 const { 
     createUser, 
     createAdmin, 
-    getUsers 
+    getUsers,
 } = require("../controllers/userController");
 
 // get users, create user
-router.route('/')
-    .get(getUsers)
-    .post(authenticate, createUser);
+router.get('/:userType', getUsers);
+router.post('/', authenticate, createUser);
 
 // Create Admin Route
 router.post("/admins", authenticate, createAdmin);

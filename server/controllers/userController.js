@@ -71,8 +71,10 @@ const createAdmin = async (request, response) => {
 // @route   GET /api/users
 // @access  Private
 const getUsers = async (request, response) => {
+    const userType = request.params.userType;
+
     try {
-        const users = await User.find({ entries: { $exists: true, $ne: [] } }).populate('entries');
+        const users = await User.find({ entries: { $exists: true, $ne: [] }, userType: userType }).populate('entries');
         
         return response
             .json(users);
