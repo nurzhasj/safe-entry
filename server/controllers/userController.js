@@ -85,8 +85,24 @@ const getUsers = async (request, response) => {
     }
 }
 
+const getUser = async (request, response) => {
+    const { entryId } = request.params;
+
+    try {
+        const user = await User.findOne({ entries: { $in: [entryId] } }).populate('entries');
+
+        return response
+            .json(user);
+    } catch(error) {
+        response
+            .status(500)
+            .json(error);
+    }
+};
+
 module.exports = {
     getUsers,
+    getUser,
     createUser,
     createAdmin,
 };

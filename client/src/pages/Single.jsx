@@ -3,8 +3,29 @@ import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
 import ChartArea from "../components/chart/ChartArea";
 import List from "../components/table/Table";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const Single = () => {
+  const [user, setUser] = useState([]);
+  const { entryId } = useParams();
+
+  useEffect(() => {
+      const fetchData = async() => {
+          try {
+              const response = await fetch(`http://localhost:8800/api/users/entry/${entryId}`);
+              const json = await response.json();
+              setUser(json);
+              console.log(user);
+          } catch(error) {
+              console.log('Error fetching user:', error);
+          }
+      };
+
+      fetchData();
+  }, [entryId]);
+
   return (
     <div className="single">
       <Sidebar />
@@ -15,16 +36,20 @@ const Single = () => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
+            {user.images ? (
               <img
-                src="https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s"
+                src={user.images[0]}
                 alt=""
                 className="itemImg"
               />
+            ) : (
+                <span>No image available</span>
+            )}
               <div className="details">
-                <h1 className="itemTitle">Nurzhas Nurbayev</h1>
+                <h1 className="itemTitle">{user.firstName} {user.lastName}</h1>
                 <div className="detailItem">
                   <div className="itemKey">Email:</div>
-                  <div className="itemValue">190103276@stu.sdu.edu.kz</div>
+                  <div className="itemValue">{user.email}</div>
                 </div>
                 <div className="detailItem">
                   <div className="itemKey">Faculty:</div>

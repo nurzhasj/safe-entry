@@ -18,12 +18,12 @@ const App = () => {
             <Route path='recognize' element={<Recognize/>}/>
             <Route path='students'>
                 <Route index element={<List userType="student" />}/>
-                <Route path=':stuId' element={<Single/>}/>
+                <Route path=':entryId' element={<Single/>}/>
                 <Route path='new' element={<New/>}/>
             </Route>
             <Route path='employees'>
                 <Route index element={<List userType="employee" />}/>
-                <Route path=':empId' element={<Single/>}/>
+                <Route path=':entryId' element={<Single/>}/>
                 <Route path='new' element={<New/>}/>
             </Route>
             <Route path='*' element={<Error/>}/>

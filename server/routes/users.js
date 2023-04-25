@@ -5,10 +5,16 @@ const {
     createUser, 
     createAdmin, 
     getUsers,
+    getUser,
 } = require("../controllers/userController");
 
-// get users, create user
+// get all users by type
 router.get('/:userType', getUsers);
+
+// get a single user by entry id
+router.get('/entry/:entryId', getUser);
+
+// craete a user
 router.post('/', authenticate, createUser);
 
 // Create Admin Route

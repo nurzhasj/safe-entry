@@ -5,7 +5,14 @@ const Usertable = ({ userType }) => {
     const [users, setUsers] = useState([]); 
 
     const userColumns = [
-        { field: "uid", headerName: "User ID", width: 105},
+        { 
+          field: "id", 
+          headerName: "User ID", 
+          width: 100,
+          renderCell: (params) => {
+            return <div>{params.row.uid}</div>;
+          },
+        },
         {
           field: "user",
           headerName: "Student",
@@ -32,7 +39,7 @@ const Usertable = ({ userType }) => {
         }
       ];
     
-    const userMapepdRows = users.flatMap(user => {
+    const userMapepdRows = users.flatMap((user) => {
         return user.entries.map(entry => ({
             id: entry._id,
             uid: user.uid,
@@ -66,7 +73,7 @@ const Usertable = ({ userType }) => {
             .then(json => setUsers(json));
     }, [userType]);
 
-    console.log(users);
+    console.log(userMapepdRows);
 
     return (
         <DataTable
