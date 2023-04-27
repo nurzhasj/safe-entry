@@ -74,7 +74,7 @@ const Single = () => {
         </div>
         <div className="bottom">
         <h1 className="title">Last Scans</h1>
-          <List/>
+          <List userRecords={user} />
         </div>
       </div>
     </div>

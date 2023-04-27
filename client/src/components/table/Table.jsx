@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const List = () => {
+const List = ({ userRecords }) => {
   const rows = [
     {
       id: 190103276,
@@ -75,21 +75,21 @@ const List = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {userRecords.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
+              <TableCell className="tableCell">{}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                   <img src={row.img} alt="" className="image" />
                   {row.product}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{row.customer}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
-              <TableCell className="tableCell">{row.amount}</TableCell>
-              <TableCell className="tableCell">{row.method}</TableCell>
+              <TableCell className="tableCell">{}</TableCell>
+              <TableCell className="tableCell">{}</TableCell>
+              <TableCell className="tableCell">{}</TableCell>
+              <TableCell className="tableCell">{}</TableCell>
               <TableCell className="tableCell">
-                <p className={`status ${row.status}`}>{row.status}</p>
+                <p className={`status ${row.status}`}>{}</p>
               </TableCell>
             </TableRow>
           ))}
