@@ -18,6 +18,7 @@ const Single = () => {
               const json = await response.json();
               setUser(json);
               console.log(user);
+              console.log("Testing purposes!");
           } catch(error) {
               console.log('Error fetching user:', error);
           }
