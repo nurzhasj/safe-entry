@@ -7,10 +7,10 @@ const carSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  addedBy: {
+  carEntries: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Admin'
-  }
+    ref: 'CarEntry'
+  }]
 });
 
 module.exports = mongoose.model('Car', carSchema);

@@ -16,6 +16,10 @@ const UserSchema = new mongoose.Schema({
     entries: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Entry'
+    }],
+    cars: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Car'
     }]
 });
 

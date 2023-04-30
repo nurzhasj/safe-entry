@@ -98,7 +98,7 @@ const Recognize = () => {
       <div className="singleContainer">
         <Navbar />
         <div className="addImagesContainer">
-          <h1 className="title">Recognize Test {personId} / {status}</h1>
+          <h1 className="title">Recognize Test </h1>
           <div className="camera-container">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Face_ID_logo.svg/800px-Face_ID_logo.svg.png" className={`cameraLogo ${hideCameraLogo ? 'hidden' : ''}`} alt="" />
             <div className="video-wrapper">
@@ -113,7 +113,7 @@ const Recognize = () => {
           <div className="images-preview">
             {image && <img src={image} className={`nodeImage ${hideNodeImage ? 'hidden' : ''}`} alt="preview 1" />}
           </div>
-          <button type='submit' className='submitBut' onClick={(e) => handleSubmit(e)}>Submit</button>
+          <button type='submit' className='submitBut' onClick={(e) => handleSubmit(e)}>Scan</button>
         </div>
       </div>
     </div>
