@@ -6,60 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { getDate } from "../../helpers/getDateFormat";
+import { getTime } from "../../helpers/getTimeFormat";
+import { getWeekDay } from "../../helpers/getWeekDayFormat";
 
-const List = ({ userRecords }) => {
-  const rows = [
-    {
-      id: 190103276,
-      product: "Nurbayev Nurzhas",
-      img: "https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s",
-      customer: "12:45",
-      date: "14:05",
-      amount: "1 hour 20 min",
-      method: "Tuesday",
-      status: "4.03.2022",
-    },
-    {
-      id: 190103276,
-      product: "Nurbayev Nurzhas",
-      img: "https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s",
-      customer: "12:45",
-      date: "14:05",
-      amount: "1 hour 20 min",
-      method: "Tuesday",
-      status: "4.03.2022",
-    },
-    {
-      id: 190103276,
-      product: "Nurbayev Nurzhas",
-      img: "https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s",
-      customer: "12:45",
-      date: "14:05",
-      amount: "1 hour 20 min",
-      method: "Tuesday",
-      status: "4.03.2022",
-    },
-    {
-      id: 190103276,
-      product: "Nurbayev Nurzhas",
-      img: "https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s",
-      customer: "12:45",
-      date: "14:05",
-      amount: "1 hour 20 min",
-      method: "Tuesday",
-      status: "4.03.2022",
-    },
-    {
-      id: 190103276,
-      product: "Nurbayev Nurzhas",
-      img: "https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s",
-      customer: "12:45",
-      date: "14:05",
-      amount: "1 hour 20 min",
-      method: "Tuesday",
-      status: "4.03.2022",
-    },
-  ];
+const List = ({ uid, username, img, entries }) => {
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -67,29 +18,27 @@ const List = ({ userRecords }) => {
           <TableRow>
             <TableCell className="tableCell">Student ID</TableCell>
             <TableCell className="tableCell">Full Name</TableCell>
-            <TableCell className="tableCell">Enter Time</TableCell>
-            <TableCell className="tableCell">Exit Time</TableCell>
-            <TableCell className="tableCell">Spent time</TableCell>
+            <TableCell className="tableCell">Scan Time</TableCell>
             <TableCell className="tableCell">Week Day</TableCell>
             <TableCell className="tableCell">Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {userRecords.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className="tableCell">{}</TableCell>
+          {Object.values(entries).map((entry) => (
+            <TableRow key={entry._id}>
+              <TableCell className="tableCell">{uid}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.img} alt="" className="image" />
-                  {row.product}
+                  <img src={img} alt="" className="image" />
+                  {username}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{}</TableCell>
-              <TableCell className="tableCell">{}</TableCell>
-              <TableCell className="tableCell">{}</TableCell>
+              <TableCell className="tableCell">{getTime(entry.enterDate)}</TableCell>
+              <TableCell className="tableCell">{getWeekDay(entry.enterDate)}</TableCell>
+              <TableCell className="tableCell">{getDate(entry.enterDate)}</TableCell>
               <TableCell className="tableCell">{}</TableCell>
               <TableCell className="tableCell">
-                <p className={`status ${row.status}`}>{}</p>
+                <p className={`status`}>{}</p>
               </TableCell>
             </TableRow>
           ))}

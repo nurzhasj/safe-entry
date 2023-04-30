@@ -34,7 +34,7 @@ const Usertable = ({ userType }) => {
         },
         {
           field: "enterTime",
-          headerName: "Enter Time",
+          headerName: "Scan Time",
           width: 100,
         }
       ];

@@ -17,13 +17,11 @@ const Single = () => {
               const response = await fetch(`http://localhost:8800/api/users/entry/${entryId}`);
               const json = await response.json();
               setUser(json);
-              console.log(user);
-              console.log("Testing purposes!");
           } catch(error) {
               console.log('Error fetching user:', error);
           }
       };
-
+  
       fetchData();
   }, [entryId]);
 
@@ -75,7 +73,12 @@ const Single = () => {
         </div>
         <div className="bottom">
         <h1 className="title">Last Scans</h1>
-          <List userRecords={user} />
+          <List
+            uid={user.uid}
+            username={`${user.firstName} ${user.lastName}`}
+            img={user.images ? user.images[0] : null} 
+            entries={user.entries || []} 
+          />
         </div>
       </div>
     </div>
