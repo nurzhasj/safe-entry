@@ -19,14 +19,14 @@ const Dashboard = () => {
           </div>
           <div className="charts">
             <div className="featured-wrapper">
-              <Featured />
-              <Featured />
+              <Featured type="daily" />
+              <Featured type="weekly" />
             </div>
               <Chart/>
           </div>
           <div className="listContainer">
             <div className="listTitle">
-              Latest Records
+              
             </div>
           </div>
       </div>

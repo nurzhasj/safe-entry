@@ -69,10 +69,9 @@ const Chart = () => {
             <Label content="content" position="insideBottom" offset={0} />
           </XAxis>
           <YAxis stroke='gray'/>
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
+          <Tooltip contentStyle={{ backgroundColor: 'white', borderColor: 'black' }} />
+          <Bar dataKey="pv" name="Students" fill="#8884d8" />
+          <Bar dataKey="uv" name="Employees" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
     </div>

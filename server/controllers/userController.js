@@ -85,6 +85,9 @@ const getUsers = async (request, response) => {
     }
 }
 
+// @desc    Getting a user
+// @route   GET /api/users/entry/:entryId
+// @access  Private
 const getUser = async (request, response) => {
     const { entryId } = request.params;
 

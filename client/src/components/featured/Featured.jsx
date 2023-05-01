@@ -4,12 +4,14 @@ import "react-circular-progressbar/dist/styles.css";
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 
 
-const Featured = () => {
+const Featured = ({ type }) => {
+    const count = type === 'daily' ? '2145' : '16345';
+
   return (
     <div className="featured">
         <div className="top">
             <div className="title">
-                Daily scans
+                {type} scans
             </div>
         </div>
         <div className="bottom">
@@ -26,7 +28,7 @@ const Featured = () => {
                         <DocumentScannerIcon 
                             className='icon'
                         />
-                        <div className="count">6,145</div>
+                        <div className="count">{count}</div>
                         <p className='desc'>Scans</p>
                     </div>
                 </CircularProgressbarWithChildren>

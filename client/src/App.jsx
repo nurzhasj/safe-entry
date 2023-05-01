@@ -17,14 +17,17 @@ const App = () => {
             <Route path='login' element={<Login/>}/>
             <Route path='recognize' element={<Recognize/>}/>
             <Route path='students'>
-                <Route index element={<List userType="student" />}/>
+                <Route index element={<List tableType="people" userType="student" />}/>
                 <Route path=':entryId' element={<Single/>}/>
                 <Route path='new' element={<New/>}/>
             </Route>
             <Route path='employees'>
-                <Route index element={<List userType="employee" />}/>
+                <Route index element={<List tableType="people" userType="employee" />}/>
                 <Route path=':entryId' element={<Single/>}/>
                 <Route path='new' element={<New/>}/>
+            </Route>
+            <Route path='cars'>
+                <Route index element={<List tableType="cars"/>}/>
             </Route>
             <Route path='*' element={<Error/>}/>
         </Routes>

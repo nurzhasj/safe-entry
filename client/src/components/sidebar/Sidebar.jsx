@@ -44,7 +44,9 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <DirectionsCarIcon className='icon'/>
-                    <div className="span">Car Plates</div>
+                    <Link to="/cars" style={{ textDecoration: "none" }}>
+                        <div className="span">Car Plates</div>
+                    </Link>
                 </li>
                 <p className="title">USER</p>
                 <li>
