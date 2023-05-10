@@ -8,6 +8,7 @@ import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import HelpIcon from '@mui/icons-material/Help';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import BadgeIcon from '@mui/icons-material/Badge';
+import FaceIcon from '@mui/icons-material/Face';
 
 import logo from '../../assets/safe-entry-logo.png';
 
@@ -27,6 +28,12 @@ const Sidebar = () => {
                     <DashboardIcon className='icon'/> 
                     <Link to="/dashboard" style={{ textDecoration: "none" }}>
                         <div className="span">Dashboard</div>
+                    </Link>
+                </li>
+                <li>
+                    <FaceIcon className='icon'/> 
+                    <Link to="/recognize" style={{ textDecoration: "none" }}>
+                        <div className="span">Recognize</div>
                     </Link>
                 </li>
                 <p className="title">LISTS</p>
