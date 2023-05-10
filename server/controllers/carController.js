@@ -9,7 +9,8 @@ const CarEntry = require('../models/CarEntry');
 const getCars = async (request, response) => {
     try {
         const cars = await 
-            Car.find().populate('ownerId');
+            Car.find({ carEntries: { $exists: true, $ne: [] }})
+                .populate('carEntries');
 
         return response
             .json(cars);

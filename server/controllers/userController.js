@@ -74,7 +74,10 @@ const getUsers = async (request, response) => {
     const userType = request.params.userType;
 
     try {
-        const users = await User.find({ entries: { $exists: true, $ne: [] }, userType: userType }).populate('entries');
+        const users = await User
+            .find({ entries: { $exists: true, $ne: [] }, userType: userType })
+            .populate('entries')
+            .populate('cars');
         
         return response
             .json(users);

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import DataTable from '../datatable/Datatable';
 
 const Cartable = ({ userType }) => {
-    const [users, setUsers] = useState([]); 
+    const [cars, setCars] = useState([]); 
 
     const userColumns = [
         { 
@@ -96,13 +96,20 @@ const Cartable = ({ userType }) => {
         return timeStr;
     }
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:8800/api/users/${userType}`, { method: "GET" })
-    //         .then(response => response.json())
-    //         .then(json => setUsers(json));
-    // }, [userType]);
-
-    //console.log(userMapepdRows);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        
+        fetch(`http://localhost:8800/api/cars`, { 
+            method: "GET",
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            },
+          })
+            .then(response => response.json())
+            .then(json => setCars(json))
+            .then(console.log(cars));
+    });
 
     return (
         <DataTable

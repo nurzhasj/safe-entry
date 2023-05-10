@@ -32,6 +32,9 @@ const Login = () => {
                     password
                 }),
             });
+
+            const data = await response.json();
+            localStorage.setItem('token', data.accessToken);
             
             if (response.ok) {
                 navigate('/dashboard');
