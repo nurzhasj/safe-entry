@@ -42,6 +42,12 @@ const Recognize = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const entryData = {
+      userId: "6402208dc77d7e3c0dbe29aa",
+      enterDate: new Date("2023-05-10T10:00:00.000Z"),
+      exitDate: new Date("2023-05-10T10:00:00.000Z")
+    };
   
     if (!image) {
       console.log("Image is not captured yet");
@@ -50,7 +56,7 @@ const Recognize = () => {
   
     const canvas = document.createElement('canvas');
     const img = new Image();
-    img.onload = () => {
+    img.onload = async () => {
       canvas.width = img.width;
       canvas.height = img.height;
       canvas.getContext('2d').drawImage(img, 0, 0);
@@ -60,35 +66,74 @@ const Recognize = () => {
       formData.append('base64Img', imageData.split(',')[1]);
 
       console.log(imageData.split(',')[1]);
-  
-      fetch('https://safe-entry-flask-app.azurewebsites.net/recognize_person', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString(),
+
+      const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+          method: 'GET',
       })
         .then(response => {
           alert('Access Granted!')
           console.log('Response:', response);
           handleStopCapture();
           setHideNodeImage(true);
-        })
+          createEntry(entryData);
+      })
         .then((data) => {
-          console.log(data);
-          setPersonId(data.person_id);
-          setStatus(data.status);
           handleStopCapture();
           setHideNodeImage(true);
-        })
+      })
         .catch(error => {
           console.error('Error:', error);
           handleStopCapture();
-        });
+      });;
+  
+      // fetch('https://safe-entry-flask-app.azurewebsites.net/recognize_person', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //   },
+      //   body: formData.toString(),
+      // })
+      //   .then(response => {
+      //     alert('Access Granted!')
+      //     console.log('Response:', response);
+      //     handleStopCapture();
+      //     setHideNodeImage(true);
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //     setPersonId(data.person_id);
+      //     setStatus(data.status);
+      //     handleStopCapture();
+      //     setHideNodeImage(true);
+      //   })
+      //   .catch(error => {
+      //     console.error('Error:', error);
+      //     handleStopCapture();
+      //   });
 
-        console.log(`Person ID: ${personId}`);
+        //console.log(`Person ID: ${personId}`);
     };
     img.src = image;
+  
+    const createEntry = async (entryData) => {
+      console.log("create entry request triggered");
+      try {
+        const response = await fetch('http://localhost:8800/api/entries', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(entryData),
+        });
+    
+        const data = await response.json();
+    
+        // handle your response data as needed
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };    
   };
   
 
