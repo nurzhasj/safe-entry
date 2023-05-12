@@ -1,16 +1,18 @@
 import React, { useState, useRef } from 'react';
 import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
+import { useNavigate } from 'react-router-dom';
 import './recognize.scss';
 
 const Recognize = () => {
+  let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
   const [image, setImage] = useState(null);
   const videoRef = useRef(null);
   const [hideCameraLogo, setHideCameraLogo] = useState(false);
   const [hideNodeImage, setHideNodeImage] = useState(false);
-  const [personId, setPersonId] = useState(null);
-  const [status, setStatus] = useState(null);
-
+ 
   const handleCapture = async () => {
     const canvas = document.createElement('canvas');
     const video = videoRef.current;
@@ -18,9 +20,7 @@ const Recognize = () => {
     canvas.height = video.videoHeight;
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     const dataUrl = canvas.toDataURL('image/jpeg');
-    if (!image) {
-        setImage(dataUrl);
-    }
+    setImage(dataUrl);
   };
 
   const handleStartCapture = () => {
@@ -42,9 +42,10 @@ const Recognize = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const entryData = {
-      userId: "6402208dc77d7e3c0dbe29aa",
+      userId: "6402d6edb007c1d47e0777c9",
       enterDate: new Date("2023-05-10T10:00:00.000Z"),
       exitDate: new Date("2023-05-10T10:00:00.000Z")
     };
@@ -130,10 +131,14 @@ const Recognize = () => {
     
         // handle your response data as needed
         console.log(data);
+
+        navigate('/students');
       } catch (error) {
         console.error('Error:', error);
       }
     };    
+
+    setIsLoading(false);
   };
   
 
@@ -158,7 +163,9 @@ const Recognize = () => {
           <div className="images-preview">
             {image && <img src={image} className={`nodeImage ${hideNodeImage ? 'hidden' : ''}`} alt="preview 1" />}
           </div>
-          <button type='submit' className='submitBut' onClick={(e) => handleSubmit(e)}>Scan</button>
+          <button type='submit' className='submitBut' onClick={(e) => handleSubmit(e)}>
+              {isLoading ? <div className="spinner"></div> : "Scan"}
+          </button>
         </div>
       </div>
     </div>
