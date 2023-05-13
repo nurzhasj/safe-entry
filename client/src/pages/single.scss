@@ -11,8 +11,8 @@
   
         .left {
           flex: 1;
-          -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-          box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+          -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2); 
+          box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2);
           padding: 20px;
           position: relative;
   
@@ -42,7 +42,7 @@
             .details {
               .itemTitle {
                 margin-bottom: 10px;
-                color: #555;
+                color: rgb(102,178,255);
               }
   
               .detailItem {
@@ -69,8 +69,8 @@
       }
   
       .bottom {
-        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2); 
+        box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2);
         padding: 20px;
         margin: 10px 20px;
       }

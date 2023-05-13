@@ -82,5 +82,13 @@
                 bottom: 0;
             }
         }
+
+        &:hover {
+            background-color: #213c5a;
+    
+            .counter {
+                color: white;
+            }
+        }
     }
 }

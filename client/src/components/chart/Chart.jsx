@@ -70,8 +70,8 @@ const Chart = () => {
           </XAxis>
           <YAxis stroke='gray'/>
           <Tooltip contentStyle={{ backgroundColor: 'white', borderColor: 'black' }} />
-          <Bar dataKey="pv" name="Students" fill="#8884d8" />
-          <Bar dataKey="uv" name="Employees" fill="#82ca9d" />
+          <Bar dataKey="pv" name="Students" fill="#FFA500" />
+          <Bar dataKey="uv" name="Employees" fill="#3362E1" />
         </BarChart>
       </ResponsiveContainer>
     </div>

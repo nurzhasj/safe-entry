@@ -2,15 +2,18 @@ import './navbar.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { useContext, useState } from 'react';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 const Navbar = () => {
     const userImage = localStorage.getItem('userImage');
-    
+    const { darkMode, dispatch } = useContext(DarkModeContext);
+     
   return (
     <div className="navbar">
-        <div className="wrapper">
-            
+        <div className="wrapper">     
             <div className="search">
                 <input type="text" placeholder='Search...' />
                 <SearchIcon/>
@@ -21,8 +24,8 @@ const Navbar = () => {
                     <LanguageIcon className='icon'/>
                     English
                 </div>
-                <div className="item">
-                    <DarkModeIcon className='icon'/>
+                <div className="item" onClick={() => dispatch({type: "TOGGLE"})}>
+                    {darkMode ? <DarkModeIcon className='icon'/> : <LightModeIcon className='icon'/>}
                 </div>
                 <div className="item">
                     <NotificationsIcon className='icon'/>

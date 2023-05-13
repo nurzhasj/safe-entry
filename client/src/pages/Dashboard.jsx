@@ -19,8 +19,8 @@ const Dashboard = () => {
           </div>
           <div className="charts">
             <div className="featured-wrapper">
-              <Featured type="daily" />
-              <Featured type="weekly" />
+              <Featured type="Daily" />
+              <Featured type="Weekly" />
             </div>
               <Chart/>
           </div>

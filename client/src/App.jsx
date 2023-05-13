@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './app.css';
+import './style/dark.scss';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import List from './pages/List';
@@ -8,10 +9,14 @@ import Error from './pages/Error';
 import Single from './pages/Single';
 import New from './pages/New';
 import Recognize from './pages/Recognize';
+import { DarkModeContext } from './context/darkModeContext';
 
 const App = () => {
+    const {darkMode} = useContext(DarkModeContext)
+
    return (
     <Router>
+        <div className={darkMode ? "app dark" : "app"}>
         <Routes>
             <Route path='dashboard' element={<Dashboard/>}/>
             <Route path='login' element={<Login/>}/>
@@ -32,6 +37,7 @@ const App = () => {
             </Route>
             <Route path='*' element={<Error/>}/>
         </Routes>
+        </div>
     </Router>
   )  
 }

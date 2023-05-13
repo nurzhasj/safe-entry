@@ -42,8 +42,8 @@ const Widget = ({ type }) => {
                 icon: <DirectionsCarIcon 
                     className='icon'
                     style={{ 
-                        color: "blue",
-                        backgroundColor: "rgba(0, 0, 255, 0.2)"
+                        color: "rgb(102,178,255)",
+                        backgroundColor: "rgba(30, 144, 255,0.2)"
                      }}/>,
             };
         break;
@@ -56,7 +56,7 @@ const Widget = ({ type }) => {
                     className='icon'
                     style={{ 
                         color: "orange",
-                        backgroundColor: "rgba(255, 251, 10, 0.8)"
+                        backgroundColor: "rgba(290, 157, 12, 0.2)"
                      }}/>,
             };
         break;

@@ -1,0 +1,62 @@
+html, body, .app {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.app.dark {
+    background-color: #0B1929;
+
+    .grid {
+        stroke: rgb(228, 228, 228, 0.219);
+    }
+
+    .sidebar {
+        background-color: #0B1929;
+    }
+
+    .widget {
+        background-color: #0B1929;
+
+        &:hover {
+            background-color: #213c5a;
+    
+            .counter {
+                color: white;
+            }
+    
+            .link {
+                color: rgb(102,178,255);
+            }
+    
+            .title {
+                color: rgb(102,178,255);
+            }
+        }
+    }
+
+    .featured {
+        background-color: #0B1929;
+    }
+
+    .single {
+        .itemTitle {
+            color: rgb(102,178,255);
+        }
+        
+        .itemValue {
+            color: white;
+        }    
+    }
+
+    .table {
+        background-color: #0B1929;
+        color: gray;
+
+        .tableCell {
+            color: rgb(102,178,255);
+        }
+    }
+} 

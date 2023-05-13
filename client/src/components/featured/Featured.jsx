@@ -5,7 +5,7 @@ import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 
 
 const Featured = ({ type }) => {
-    const count = type === 'daily' ? '2145' : '16345';
+    const count = type === 'Daily' ? '2145' : '16345';
 
   return (
     <div className="featured">
