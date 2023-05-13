@@ -32,6 +32,7 @@ const signIn = async (request, response) => {
         const accessToken = jwt.sign(email, process.env.ACCESS_TOKEN_SECRET);
         
         return response.json({
+            user: user,
             accessToken: accessToken
         }); 
     } catch (error) {

@@ -35,6 +35,8 @@ const Login = () => {
 
             const data = await response.json();
             localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('userImage', data.user.images[0]);
+            
             
             if (response.ok) {
                 navigate('/dashboard');

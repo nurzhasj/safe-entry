@@ -5,6 +5,8 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Navbar = () => {
+    const userImage = localStorage.getItem('userImage');
+    
   return (
     <div className="navbar">
         <div className="wrapper">
@@ -27,7 +29,7 @@ const Navbar = () => {
                     <div className="counter">1</div>
                 </div>
                 <div className="item">
-                    <img src="https://media.licdn.com/dms/image/C4D03AQEC00YzH1CrDA/profile-displayphoto-shrink_800_800/0/1612520044054?e=2147483647&v=beta&t=XyWjuzvyBOwBpobt1hMH8TS4byW9DD3EA71BWFSA9_s" alt="" className='avatar'/>
+                    <img src={userImage} alt="" className='avatar'/>
                 </div>
             </div>
         </div>
