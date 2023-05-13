@@ -96,7 +96,12 @@ const getUser = async (request, response) => {
     const { entryId } = request.params;
 
     try {
-        const user = await User.findOne({ entries: { $in: [entryId] } }).populate('entries');
+        const user = await User
+            .findOne({ entries: { $in: [entryId] } })
+            .populate({
+                path: 'entries',
+                options: { sort: { 'enterDate': -1 } }
+            });
 
         return response
             .json(user);
