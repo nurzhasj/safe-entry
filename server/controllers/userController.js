@@ -77,7 +77,8 @@ const getUsers = async (request, response) => {
         const users = await User
             .find({ entries: { $exists: true, $ne: [] }, userType: userType })
             .populate('entries')
-            .populate('cars');
+            .populate('cars')
+            .sort({ enterDate: 1 });
         
         return response
             .json(users);
