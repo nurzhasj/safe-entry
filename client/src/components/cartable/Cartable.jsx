@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import DataTable from '../datatable/Datatable';
 
 const Cartable = ({ userType }) => {
-    const [cars, setCars] = useState([]); 
+    const [carEntries, setCarEntries] = useState([]); 
 
     const userColumns = [
         { 
@@ -14,14 +14,14 @@ const Cartable = ({ userType }) => {
           },
         },
         {
-          field: "user",
+          field: "username",
           headerName: "Owner Name",
-          width: 300,
+          width: 250,
           renderCell: (params) => {
             return (
               <div className="cellWithImg">
                 <img className="cellImg" src={params.row.img} alt="" />
-                {params.row.ownerId}
+                {params.row.username}
               </div>
             );
           },
@@ -30,55 +30,26 @@ const Cartable = ({ userType }) => {
         {
           field: "date",
           headerName: "Date",
-          width: 100,
+          width: 200,
         },
         {
           field: "enterTime",
           headerName: "Scan Time",
-          width: 100,
+          width: 150,
         }
     ];
 
-    const rows = [
-        {
-            id: "1234",
-            licensePlate : "123EOA08",
-            modelName : "Audi A4",
-            ownerId : "640460ce1218fe6d53cd49d0",
-            carEntries : []
-        },
-        {
-            id: "1235",
-            licensePlate : "200NUR02",
-            modelName : "Panamera",
-            ownerId : "640460ce1218fe6d53cd49d0",
-            carEntries : [
-                {
-                    "id" : "644ecd10e862d9c81ea5e04c",
-                    "carId" : "644ebb7ae9c4b50152def1db",
-                    "scanDate" : "2023-04-24T13:36:54.000+00:00"
-                }
-            ]
-        },
-        {
-            id: "1236",
-            licensePlate : "007AAA02",
-            modelName : "Camaro",
-            ownerId : "640460ce1218fe6d53cd49d0",
-            carEntries : []
-        },
-    ];
-    // const userMapepdRows = users.flatMap((user) => {
-    //     return user.entries.map(entry => ({
-    //         id: entry._id,
-    //         uid: user.uid,
-    //         username: user.firstName + ' ' + user.lastName,
-    //         email: user.email,
-    //         img: user.images[0], 
-    //         date: getDate(entry.enterDate), 
-    //         enterTime: getTime(entry.enterDate),
-    //     }));
-    // });
+    const carEntryMappedRows = carEntries.map(carEntry => ({
+        id: carEntry._id,
+        username: carEntry.carId.ownerId.firstName + ' ' + carEntry.carId.ownerId.lastName,
+        img: carEntry.carId.ownerId.images[0],
+        licensePlate: carEntry.carId.licensePlate,
+        modelName: carEntry.carId.modelName,
+        date: getDate(carEntry.scanDate), 
+        enterTime: getTime(carEntry.scanDate),
+    }));
+
+    console.log(carEntryMappedRows);
     
     function getDate(enterDate) {
         var dt = new Date(enterDate);
@@ -99,7 +70,7 @@ const Cartable = ({ userType }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         
-        fetch(`http://localhost:8800/api/cars`, { 
+        fetch(`http://localhost:8800/api/carEntries`, { 
             method: "GET",
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -107,13 +78,13 @@ const Cartable = ({ userType }) => {
             },
           })
             .then(response => response.json())
-            .then(json => setCars(json))
-            .then(console.log(cars));
+            .then(json => setCarEntries(json))
+            .then(console.log(carEntries));
     });
 
     return (
         <DataTable
-            rows={rows}
+            rows={carEntryMappedRows}
             columns={userColumns}
         /> 
     )

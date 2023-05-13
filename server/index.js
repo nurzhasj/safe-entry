@@ -9,6 +9,7 @@ const dotenv = require("dotenv");
 const processImageRoute = require("./routes/process-image");
 const userRoute = require("./routes/users");
 const carRoute = require("./routes/cars");
+const carEntryRoute = require("./routes/carEntries");
 const entryRoute = require("./routes/entries");
 const authRouter = require("./routes/auth");
 const recoRouter = require("./routes/recognize");
@@ -57,6 +58,9 @@ app.use("/api/entries", entryRoute);
 
 // Car routes
 app.use("/api/cars", carRoute);
+
+// Car entry routes
+app.use("/api/carEntries", carEntryRoute);
 
 // The recognition route
 app.use("/api/recognize", recoRouter);

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import DataTable from '../datatable/Datatable';
 
 const Usertable = ({ userType }) => {
-    const [users, setUsers] = useState([]); 
     const [entries, setEntries] = useState([]); 
 
     const userColumns = [
