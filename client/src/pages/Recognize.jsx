@@ -45,9 +45,9 @@ const Recognize = () => {
     setIsLoading(true);
 
     const entryData = {
-      userId: "6402d6edb007c1d47e0777c9",
-      enterDate: new Date("2023-05-10T10:00:00.000Z"),
-      exitDate: new Date("2023-05-10T10:00:00.000Z")
+      userId: "6402208dc77d7e3c0dbe29aa",
+      enterDate: new Date(),
+      exitDate: new Date()
     };
   
     if (!image) {
@@ -73,7 +73,7 @@ const Recognize = () => {
       })
         .then(response => {
           alert('Access Granted!')
-          console.log('Response:', response);
+          console.log('Response:', response.json());
           handleStopCapture();
           setHideNodeImage(true);
           createEntry(entryData);
