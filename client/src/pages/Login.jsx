@@ -3,6 +3,7 @@ import './login.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../components/form/FormInput';
+import safe from '../assets/safe-entry-logo.png';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -68,7 +69,7 @@ const Login = () => {
     ];
 
   return (
-    <div className="app">
+    <div className="login">
         <form onSubmit={signin}>
             <h1 className='hello'>Enter to Safe Entry System !</h1>
                 {inputs.map(input => (
@@ -83,7 +84,7 @@ const Login = () => {
         </form>    
         
         <div className="imgBlock">
-            <img src="https://assets-cdn.kathmandupost.com/uploads/source/news/2021/opinion/shutterstock1747856960-1640014198.jpg" alt=""/>  
+            <img src={safe} alt=""/>  
         </div>
     </div>
   )

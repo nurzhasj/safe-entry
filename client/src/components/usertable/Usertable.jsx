@@ -15,7 +15,7 @@ const Usertable = ({ userType }) => {
         },
         {
           field: "user",
-          headerName: "Student",
+          headerName: `${userType.charAt(0).toUpperCase() + userType.slice(1)}`,
           width: 300,
           renderCell: (params) => {
             return (
