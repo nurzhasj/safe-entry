@@ -4,7 +4,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
                     <div className="counter">1</div>
                 </div>
                 <div className="item">
-                    <img src={userImage} alt="" className='avatar'/>
+                    <img src={`data:image/jpeg;base64,${userImage}`} alt="" className='avatar'/>
                 </div>
             </div>
         </div>

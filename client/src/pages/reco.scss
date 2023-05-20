@@ -1,0 +1,22 @@
+.webcam-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+    .webcam-frame {
+      margin-bottom: 20px;
+    }
+  
+    .capture-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #008CBA;
+      color: white;
+      cursor: pointer;
+    }
+  }
+  
