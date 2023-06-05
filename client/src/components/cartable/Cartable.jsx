@@ -20,7 +20,7 @@ const Cartable = ({ userType }) => {
           renderCell: (params) => {
             return (
               <div className="cellWithImg">
-                <img className="cellImg" src={params.row.img} alt="" />
+                <img className="cellImg" src={`data:image/jpeg;base64,${params.row.img}`} alt="" />
                 {params.row.username}
               </div>
             );
