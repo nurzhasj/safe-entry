@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/bfe9a67f-8e8b-42c6-a2b1-8bd644c04108/resourceGroups/safeentry-fr_group/providers/Microsoft.Web/sites/safeentry-app",
+    "appService.deploySubpath": "."
+}
