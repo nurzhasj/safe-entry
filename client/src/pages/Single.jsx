@@ -37,7 +37,7 @@ const Single = () => {
             <div className="item">
             {user.images ? (
               <img
-                src={user.images[0]}
+                src={`data:image/jpeg;base64,${user.images[0]}`}
                 alt=""
                 className="itemImg"
               />
@@ -76,7 +76,7 @@ const Single = () => {
           <List
             uid={user.uid}
             username={`${user.firstName} ${user.lastName}`}
-            img={user.images ? user.images[0] : null} 
+            img={user.images ? `data:image/jpeg;base64,${user.images[0]}` : null} 
             entries={user.entries || []} 
           />
         </div>
