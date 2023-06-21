@@ -103,7 +103,6 @@ const Recognize = () => {
     img.src = image;
   
     const createEntry = async (entryData) => {
-      console.log("create entry request triggered");
       try {
         const response = await fetch('http://localhost:8800/api/entries', {
           method: 'POST',

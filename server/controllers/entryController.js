@@ -1,5 +1,6 @@
     const Entry = require("../models/Entry");
     const User = require("../models/User");
+    
 
     // @desc    Creating an entry
     // @route   POST /api/entries
@@ -19,7 +20,7 @@
                 return response.status(404).json({ message: 'User not found' });
             }
 
-            // user's uid
+            // user's uid and name
             console.log(`User's UID: ${user.uid}`);
 
             // updating the userId in newEntry to be MongoDB ObjectId
