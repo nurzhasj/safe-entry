@@ -44,8 +44,13 @@ const Recognize = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    // const entryData = {
+    //   userId: "6402208dc77d7e3c0dbe29aa",
+    //   enterDate: new Date(),
+    //   exitDate: new Date()
+    // };
+
     const entryData = {
-      userId: "6402208dc77d7e3c0dbe29aa",
       enterDate: new Date(),
       exitDate: new Date()
     };
@@ -62,57 +67,38 @@ const Recognize = () => {
       canvas.height = img.height;
       canvas.getContext('2d').drawImage(img, 0, 0);
       const imageData = canvas.toDataURL('image/jpeg');
-
+  
       const formData = new URLSearchParams();
       formData.append('base64Img', imageData.split(',')[1]);
-
-      console.log(imageData.split(',')[1]);
-
-      const response = await fetch('https://jsonplaceholder.typicode.com/users', {
-          method: 'GET',
-      })
-        .then(response => {
-          alert('Access Granted!')
-          console.log('Response:', response.json());
-          handleStopCapture();
-          setHideNodeImage(true);
-          createEntry(entryData);
-      })
-        .then((data) => {
-          handleStopCapture();
-          setHideNodeImage(true);
-      })
-        .catch(error => {
-          console.error('Error:', error);
-          handleStopCapture();
-      });;
   
-      // fetch('https://safe-entry-flask-app.azurewebsites.net/recognize_person', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded',
-      //   },
-      //   body: formData.toString(),
-      // })
-      //   .then(response => {
-      //     alert('Access Granted!')
-      //     console.log('Response:', response);
-      //     handleStopCapture();
-      //     setHideNodeImage(true);
-      //   })
-      //   .then((data) => {
-      //     console.log(data);
-      //     setPersonId(data.person_id);
-      //     setStatus(data.status);
-      //     handleStopCapture();
-      //     setHideNodeImage(true);
-      //   })
-      //   .catch(error => {
-      //     console.error('Error:', error);
-      //     handleStopCapture();
-      //   });
+      console.log(imageData.split(',')[1]);
+  
+      await fetch('http://127.0.0.1:5000/recognize_person', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString(),
+      })
+      .then(async response => {
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Response:', data);
+          console.log(data.personId);
+          alert('Access Granted!')
+          handleStopCapture();
+          setHideNodeImage(true);
+          entryData.userId = data.person_id; // Assuming personId is returned from the response
+          createEntry(entryData);
+        } else {
+          throw new Error('Recognition Failed!')
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        handleStopCapture();
+      });
 
-        //console.log(`Person ID: ${personId}`);
     };
     img.src = image;
   

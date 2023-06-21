@@ -13,15 +13,22 @@
         });
 
         try {
-            const entry = await newEntry.save();
-
-            const user = await User.findById(request.body.userId);
+            const user = await User.findOne({ uid: request.body.userId });
 
             if (! user) {
                 return response.status(404).json({ message: 'User not found' });
             }
 
+            // user's uid
+            console.log(`User's UID: ${user.uid}`);
+
+            // updating the userId in newEntry to be MongoDB ObjectId
+            newEntry.userId = user._id;
+
+            const entry = await newEntry.save();            
+
             user.entries.push(entry.id);
+
             await user.save();
 
             response
