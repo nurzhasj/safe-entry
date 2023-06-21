@@ -14,7 +14,7 @@
         });
 
         try {
-            const user = await User.findOne({ uid: request.body.userId });
+            const user = await User.findOne({ _id: request.body.userId });
 
             if (! user) {
                 return response.status(404).json({ message: 'User not found' });

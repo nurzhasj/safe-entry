@@ -1,18 +1,28 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Sidebar from "../components/sidebar/Sidebar";
 import Navbar from "../components/navbar/Navbar";
 import { useNavigate } from 'react-router-dom';
 import './recognize.scss';
 
+// Web Socket import
+import io from 'socket.io-client';
+
 const Recognize = () => {
   let navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [socketRef, setSocketRef] = useState(null);
 
   const [image, setImage] = useState(null);
   const videoRef = useRef(null);
   const [hideCameraLogo, setHideCameraLogo] = useState(false);
   const [hideNodeImage, setHideNodeImage] = useState(false);
- 
+  
+  useEffect(() => {
+    const socket = io("http://localhost:8800");
+    setSocketRef(socket);
+    return () => socket.disconnect();  // Disconnect when the component unmounts.
+  }, []);
+
   const handleCapture = async () => {
     const canvas = document.createElement('canvas');
     const video = videoRef.current;
@@ -111,17 +121,19 @@ const Recognize = () => {
           },
           body: JSON.stringify(entryData),
         });
-    
+  
         const data = await response.json();
-    
-        // handle your response data as needed
+  
         console.log(data);
-
+  
+        // Emit the new entry data to the server.
+        socketRef.emit('newEntry', data);
+  
         navigate('/students');
       } catch (error) {
         console.error('Error:', error);
       }
-    };    
+    };   
 
     setIsLoading(false);
   };

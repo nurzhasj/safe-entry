@@ -38,10 +38,15 @@ app.use("/api/recognize", recoRouter);
 const server = http.createServer(app);
 
 // Create Socket.IO instance attached to HTTP server
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"]
+    }
+});
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  console.log('socket connection is set');
   socket.on('newEntry', (entryData) => {
     io.emit('newEntry', entryData);
   });

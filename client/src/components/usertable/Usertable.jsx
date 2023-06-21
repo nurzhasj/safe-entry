@@ -1,8 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import DataTable from '../datatable/Datatable';
 
+// Web Socket client import
+import io from 'socket.io-client';
+
 const Usertable = ({ userType }) => {
     const [entries, setEntries] = useState([]); 
+    const [socketRef, setSocketRef] = useState(null);
+
+    useEffect(() => {
+      const socket = io("http://localhost:8800");
+      setSocketRef(socket);
+  
+      socket.on('newEntry', (newEntry) => {
+        setEntries(prevEntries => [...prevEntries, newEntry]);
+      });
+  
+      return () => socket.disconnect();
+    }, []);
+  
 
     const userColumns = [
         { 
