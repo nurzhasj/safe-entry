@@ -94,12 +94,19 @@ const Recognize = () => {
         if (response.ok) {
           const data = await response.json();
           console.log('Response:', data);
-          console.log(data.personId);
-          alert('Access Granted!')
-          handleStopCapture();
-          setHideNodeImage(true);
-          entryData.userId = data.person_id; // Assuming personId is returned from the response
-          createEntry(entryData);
+          console.log(data.person_id);
+
+          if (data.person_id) {
+            alert('Access Granted!')
+            handleStopCapture();
+            setHideNodeImage(true);
+            entryData.userId = data.person_id; // Assuming personId is returned from the response
+            createEntry(entryData);
+          } else {
+            alert('Access Denied');
+            throw new Error('Access Denied!');
+          }
+          
         } else {
           throw new Error('Recognition Failed!')
         }
@@ -128,8 +135,17 @@ const Recognize = () => {
   
         // Emit the new entry data to the server.
         socketRef.emit('newEntry', data);
-  
+
+        console.log(entryData);
+        
+        // if (entryData.userType == "students") {
+        //   navigate('/students');
+        // } else {
+        //   navigate('/employees');
+        // }
+
         navigate('/students');
+        
       } catch (error) {
         console.error('Error:', error);
       }

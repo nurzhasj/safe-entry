@@ -40,14 +40,15 @@ const Cartable = ({ userType }) => {
     ];
 
     const carEntryMappedRows = carEntries.map(carEntry => ({
-        id: carEntry._id,
-        username: carEntry.carId.ownerId.firstName + ' ' + carEntry.carId.ownerId.lastName,
-        img: carEntry.carId.ownerId.images[0],
-        licensePlate: carEntry.carId.licensePlate,
-        modelName: carEntry.carId.modelName,
-        date: getDate(carEntry.scanDate), 
-        enterTime: getTime(carEntry.scanDate),
+      id: carEntry._id,
+      username: (carEntry.carId?.ownerId?.firstName ?? '') + ' ' + (carEntry.carId?.ownerId?.lastName ?? ''),
+      img: carEntry.carId?.ownerId?.images[0] ?? '',
+      licensePlate: carEntry.carId?.licensePlate ?? '',
+      modelName: carEntry.carId?.modelName ?? '',
+      date: getDate(carEntry.scanDate), 
+      enterTime: getTime(carEntry.scanDate),
     }));
+  
 
     console.log(carEntryMappedRows);
     
@@ -80,7 +81,7 @@ const Cartable = ({ userType }) => {
             .then(response => response.json())
             .then(json => setCarEntries(json))
             .then(console.log(carEntries));
-    });
+    }, []);
 
     return (
         <DataTable
