@@ -9,6 +9,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import BadgeIcon from '@mui/icons-material/Badge';
 import FaceIcon from '@mui/icons-material/Face';
+import CarRentalIcon from '@mui/icons-material/CarRental';
 
 import logo from '../../assets/safe-entry-logo.png';
 
@@ -33,7 +34,13 @@ const Sidebar = () => {
                 <li>
                     <FaceIcon className='icon'/> 
                     <Link to="/recognize" style={{ textDecoration: "none" }}>
-                        <div className="span">Recognize</div>
+                        <div className="span">Recognize User</div>
+                    </Link>
+                </li>
+                <li>
+                    <CarRentalIcon className='icon'/> 
+                    <Link to="/recognize-car" style={{ textDecoration: "none" }}>
+                        <div className="span">Recognize Car</div>
                     </Link>
                 </li>
                 <p className="title">LISTS</p>

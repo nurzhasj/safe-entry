@@ -161,7 +161,7 @@ const NewUser = () => {
       <div className="singleContainer">
         <Navbar />
         <div className="newUser">
-          <h1 className="newUserTitle">New User</h1>
+          <h1 className="newUserTitle">New User 👳🏽‍♂️</h1>
           <form className="newUserForm" onSubmit={handleSubmit}>
             <div className="formFieldsContainer">
             <div className="newUserItem">

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import DataTable from '../datatable/Datatable';
+import DataTableCar from '../datatable/DatatableCar';
 
 const Cartable = ({ userType }) => {
     const [carEntries, setCarEntries] = useState([]); 
@@ -84,7 +84,7 @@ const Cartable = ({ userType }) => {
     }, []);
 
     return (
-        <DataTable
+        <DataTableCar
             rows={carEntryMappedRows}
             columns={userColumns}
         /> 

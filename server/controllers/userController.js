@@ -90,6 +90,29 @@ const getUsers = async (request, response) => {
     }
 }
 
+const getUsersAll = async (request, response) => {
+    try {
+        const users = await User.find({}, { firstName: 1, lastName: 1, images: { $slice: 1 } });
+
+        // map through users and format response
+        const formattedUsers = users.map(user => {
+            return {
+                id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                image: user.images[0] // assuming image is an array and you want the first one
+            }
+        });
+
+        return response
+            .json(formattedUsers);
+    } catch (error) {
+        response
+            .status(500)
+            .json(error);
+    }
+}
+
 // @desc    Getting a user
 // @route   GET /api/users/entry/:entryId
 // @access  Private
@@ -113,9 +136,11 @@ const getUser = async (request, response) => {
     }
 };
 
+
 module.exports = {
     getUsers,
     getUser,
     createUser,
     createAdmin,
+    getUsersAll
 };
