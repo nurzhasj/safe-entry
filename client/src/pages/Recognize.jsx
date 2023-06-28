@@ -136,8 +136,6 @@ const Recognize = () => {
         // Emit the new entry data to the server.
         socketRef.emit('newEntry', data);
 
-        console.log(entryData);
-        
         // if (entryData.userType == "students") {
         //   navigate('/students');
         // } else {
