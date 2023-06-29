@@ -26,8 +26,7 @@ const Recognize = () => {
     setIsLoading(true);
 
     const entryData = {
-      enterDate: new Date(),
-      exitDate: new Date()
+      scanDate: new Date()
     };
   
     if (!image) {
@@ -48,12 +47,54 @@ const Recognize = () => {
   
       console.log(imageData.split(',')[1]);
   
-      // Your fetch function...
+      await fetch('http://localhost:8800/api/carEntries', {
+        method: 'GET',
+        // headers: {
+        //   'Content-Type': 'application/x-www-form-urlencoded',
+        // },
+        //body: formData.toString(),
+      })
+      .then(async response => {
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Response:', data);
+          alert('Access Granted!')
+          entryData.carId = "649ca2cbaf31e7622b7cc27b"; // Assuming carId is returned from the response
+          await createEntry(entryData);  
+        } else {
+          throw new Error('Recognition Failed!')
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
 
     };
     img.src = image;
   
-    // The rest of your code...
+    const createEntry = async (entryData) => {
+      try {
+        const response = await fetch('http://localhost:8800/api/carEntries', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(entryData),
+        });
+  
+        const data = await response.json();
+  
+        console.log(data);
+  
+        // Emit the new entry data to the server.
+        // socketRef.emit('newEntry', data);
+
+        navigate('/cars');
+        
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };   
   };
 
   return (

@@ -129,8 +129,8 @@ const NewUser = () => {
             .then(response => {
               console.log('Response:', response);
               alert("User has been added to the system !")
-              //handleStopCapture();
-              //resetForm();
+              handleStopCapture();
+              resetForm();
             })
             .catch(error => {
               alert("Unable to add the user !")
